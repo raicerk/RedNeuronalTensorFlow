@@ -1,8 +1,8 @@
 import tensorflow as tf
 import numpy as np
 
-numeros = np.array([1,2,3,4,5], dtype=float)
-multiplo_de_dos = np.array([2,4,6,8,10], dtype=float)
+numeros = np.array([1,2,3,4,5,6,7,8,9,10], dtype=float)
+multiplo_de_dos = np.array([2,4,6,8,10,12,14,16,18,20], dtype=float)
 
 entrada = tf.keras.layers.Dense(units=3, input_shape=[1])
 neurona1 = tf.keras.layers.Dense(units=3)
@@ -19,8 +19,8 @@ historial = modelo.fit(numeros, multiplo_de_dos, epochs=1000, verbose=False)
 print("Modelo entrenado!")
 
 print("Hagamos una prediccion de multiplo de dos!")
-resultado = modelo.predict([100.0])
+resultado = modelo.predict([100.0, 200.0, 111.0])
 print("El resultado es " +str(resultado))
 
 print("Variables internas del modelo")
-print(salida.get_weights())
+print(entrada.get_weights())
