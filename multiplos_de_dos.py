@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 
 numeros = np.array([1,2,3,4,5,6,7,8,9,10], dtype=int)
 multiplo_de_dos = np.array([2,4,6,8,10,12,14,16,18,20], dtype=int)
@@ -15,8 +16,14 @@ modelo.compile(
 )
 
 print("Comenzando entrenamiento...")
-historial = modelo.fit(numeros, multiplo_de_dos, epochs=300, verbose=False)
+historial = modelo.fit(numeros, multiplo_de_dos, epochs=200, verbose=False)
 print("Modelo entrenado!")
+
+# Visor del entrenamiento
+plt.xlabel("# Epoca")
+plt.ylabel("Magnitud de pérdida")
+plt.plot(historial.history["loss"])
+plt.show()
 
 print("Hagamos una prediccion de multiplo de dos!")
 resultado = np.around(modelo.predict([100, 200, 111, 1325]), decimals=1).astype(int)
